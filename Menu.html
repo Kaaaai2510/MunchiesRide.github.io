@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante - Menú y Factura</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        /* Estilos CSS para la página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        div {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select, input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        #pedidoActual {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        #menuBanco {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #menuBanco a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        #menuBanco a:hover {
+            background-color: #555;
+        }
+    </style>
+
+    <h1>Restaurante</h1>
+
+    <a href="Mesas.html">Quiero cambiar de mesa</a>
+
+    <div>
+        <h2>Menú del restaurante:</h2>
+        <ul>
+            <li><span>1:</span> Hamburguesa - $10.99</li>
+            <li><span>2:</span> Pizza - $8.99</li>
+            <li><span>3:</span> Ensalada - $5.99</li>
+            <li><span>4:</span> Sopa - $4.99</li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Tomar Pedido</h2>
+        <label for="plato">Seleccione un plato:</label>
+        <select id="plato">
+            <option value="1">Hamburguesa</option>
+            <option value="2">Pizza</option>
+            <option value="3">Ensalada</option>
+            <option value="4">Sopa</option>
+        </select>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" min="1" value="1">
+        <button onclick="tomarPedido()">Tomar Pedido</button>
+        <div id="pedidoActual">
+            <h3>Pedido Actual:</h3>
+            <ul id="listaPedidos">
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <h2>Calcular Factura</h2>
+        <button onclick="calcularFactura()">Calcular Factura</button>
+        <div id="facturaResultado"></div>
+    </div>
+
+    <div id="MenuBanco">
+        <a href="banco.html">Ir al Menú del Banco</a>
+    </div>
+
+    <script>
+        // Funciones para tomar pedido, calcular factura y almacenar datos en localStorage...
+        const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+
+        function tomarPedido() {
+            const platoSeleccionado = document.getElementById("plato");
+            const cantidad = document.getElementById("cantidad");
+
+            const plato = platoSeleccionado.options[platoSeleccionado.selectedIndex].text;
+            const cantidadValue = parseInt(cantidad.value);
+
+            if (cantidadValue > 0) {
+                pedidos.push({ plato, cantidad: cantidadValue });
+                localStorage.setItem("pedidos", JSON.stringify(pedidos));
+
+                const listaPedidos = document.getElementById("listaPedidos");
+                const listItem = document.createElement("li");
+                listItem.textContent = `${cantidadValue} x ${plato}`;
+                listaPedidos.appendChild(listItem);
+
+                platoSeleccionado.selectedIndex = 0;
+                cantidad.value = 1;
+            }
+        }
+
+        function calcularFactura() {
+            let total = 0;
+            const facturaResultado = document.getElementById("facturaResultado");
+
+            pedidos.forEach((pedido) => {
+                const plato = pedido.plato;
+                const cantidad = pedido.cantidad;
+
+                switch (plato) {
+                    case "Hamburguesa":
+                        total += cantidad * 10.99;
+                        break;
+                    case "Pizza":
+                        total += cantidad * 8.99;
+                        break;
+                    case "Ensalada":
+                        total += cantidad * 5.99;
+                        break;
+                    case "Sopa":
+                        total += cantidad * 4.99;
+                        break;
+                }
+            });
+
+            facturaResultado.textContent = `Total de la factura: $${total.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante - Banco</title>
+    <style>
+        /* Estilos CSS para la interfaz del banco aquí... */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        div {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Restaurante</h1>
+
+    <div>
+        <h2>Interfaz del Banco</h2>
+        <label for="tarjeta">Número de tarjeta:</label>
+        <input type="text" id="tarjeta" placeholder="Ingrese el número de tarjeta">
+        <button onclick="realizarTransaccion()">Realizar Transacción</button>
+    </div>
+
+    <script>
+        // Función para realizar la transacción y redirigir a Abandonar Mesa...
+        function realizarTransaccion() {
+            // Implementación para procesar la transacción...
+            alert("La transacción se ha realizado con éxito. ¡Gracias por su pago!");
+            
+            // Redirigir a la página de Abandonar Mesa
+            window.location.href = "desocupar.html";
+        }
+    </script>
+</body>
+</html>

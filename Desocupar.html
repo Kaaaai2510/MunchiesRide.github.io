@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante - Dejar Mesa</title>
+    <style>
+        /* Estilos CSS para la página de Dejar Mesa aquí... */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        div {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        #mensajeDesocupar {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Restaurante</h1>
+
+    <div>
+        <h2>Dejar Mesa</h2>
+        <label for="mesa">Número de Mesa:</label>
+        <input type="text" id="mesa" placeholder="Ingrese el número de mesa">
+        <button onclick="desocuparMesa()">Desocupar Mesa</button>
+    </div>
+
+    <div id="mensajeDesocupar"></div>
+
+    <a href="mesas.html">Volver a Elegir Mesa</a> <!-- Enlace para regresar a Elegir Mesa -->
+
+    <script>
+        // Función para desocupar la mesa...
+        function desocuparMesa() {
+            const numeroMesa = document.getElementById("mesa").value;
+
+            if (numeroMesa.trim() === "") {
+                alert("Por favor, ingrese el número de mesa.");
+                return;
+            }
+
+            // Implementación para desocupar la mesa (puedes agregar tu lógica aquí)...
+
+            // Mostrar mensaje de desocupación exitosa
+            const mensajeDesocupar = document.getElementById("mensajeDesocupar");
+            mensajeDesocupar.textContent = `Mesa ${numeroMesa} ha sido desocupada con éxito.`;
+        }
+    </script>
+</body>
+</html>
