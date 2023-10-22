@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante - Elegir Mesa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Restaurante</h1>
+
+    <div>
+        <h2>Ocupar Mesa</h2>
+        <label for="mesa">Seleccione una mesa:</label>
+        <select id="mesa">
+            <option value="1">Mesa 1</option>
+            <option value="2">Mesa 2</option>
+            <option value="3">Mesa 3</option>
+            <option value="4">Mesa 4</option>
+        </select>
+        <label for="personas">Número de personas:</label>
+        <input type="number" id="personas" min="1" value="1">
+        <button onclick="ocuparMesa()">Ocupar Mesa</button>
+    </div>
+    <a id="menuLink" href="Menu">Ir al Menú del Restaurante</a>
+    <script src="script.js"></script>
+</body>
+</html>
